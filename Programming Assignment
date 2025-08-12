@@ -1,0 +1,38 @@
+
+# EPM Assignment for crustal structure .Group -8 (Batch 57th)ID- 241-141-002, ID- 241-141-005
+
+
+import math
+#Crystal structure input
+crystal= input('Enter crystal structure(BCC or  FCC):').strip().upper()
+
+#Input
+density= float(input("Enter density (Kg/m³):"))
+atomic_mass= float(input("Enter atomic mass(Kg /mol):"))
+NA=  float(input("Enter Avogadro's number (atoms/mol):"))
+
+#Atomic concentration in atoms/m³
+atomic_concentration_m3 = (density * NA )/atomic_mass
+
+#Convert to atom/cm³
+atomic_concentration_cm3 = atomic_concentration_m3 * 1e-6
+
+if crystal == 'BCC':
+    atoms_per_unit_cell = 2
+    volume = atoms_per_unit_cell / atomic_concentration_m3
+
+    a = volume ** (1/3)
+
+    R = a * math.sqrt(3) / 4
+elif crystal == 'FCC':
+    atoms_per_unit_cell = 4
+    volume = atoms_per_unit_cell / atomic_concentration_m3
+
+    a = volume ** (1/3)
+
+    R = a * math.sqrt(2) / 4
+
+# Output
+print("Lattice parameter (a): {a:.6e} m")
+print("Atomic radius (R): {R:.6e} m")
+print("Atomic concentration: {atomic_concentration_m3:.6e} atoms/cm³")
